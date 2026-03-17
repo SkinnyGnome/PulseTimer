@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pulsetimer"
+version = "0.1.0"
+description = "PulseTimer interval timer built with BeeWare"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "PulseTimer Contributors" }]
+license = { file = "LICENSE" }
+urls = { Homepage = "https://github.com/SkinnyGnome/PulseTimer", Repository = "https://github.com/SkinnyGnome/PulseTimer" }
+dependencies = []
+
+[project.optional-dependencies]
+app = ["toga>=0.4.7"]
+dev = ["briefcase>=0.4.1", "pytest>=8.0"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.briefcase]
+project_name = "PulseTimer"
+bundle = "com.skinnygnome"
+version = "0.1.0"
+url = "https://github.com/SkinnyGnome/PulseTimer"
+license.file = "LICENSE"
+author = "Johnny"
+author_email = "58705794+SkinnyGnome@users.noreply.github.com"
+
+[tool.briefcase.app.pulsetimer]
+formal_name = "PulseTimer"
+description = "Android interval timer with beep and vibration alerts"
+long_description = """
+PulseTimer is a BeeWare interval timer for Android. It runs a single active session with a configurable interval, total duration, and alert mode while targeting reliable background and screen-off execution.
+"""
+sources = ["src/pulsetimer"]
+test_sources = ["tests"]
+requires = []
+test_requires = ["pytest>=8.0"]
+
+[tool.briefcase.app.pulsetimer.android]
+requires = ["toga-android~=0.5.3"]
+
+[tool.briefcase.app.pulsetimer.android.permission."android.permission.VIBRATE"]
+
+[tool.briefcase.app.pulsetimer.android.permission."android.permission.WAKE_LOCK"]
+
+[tool.briefcase.app.pulsetimer.android.permission."android.permission.FOREGROUND_SERVICE"]
+
+[tool.briefcase.app.pulsetimer.android.permission."android.permission.POST_NOTIFICATIONS"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
